@@ -68,3 +68,18 @@ input:focus {
 .btn_login:hover {
     background: #357ac8;
 }
+
+
+
+
+.popup_err {
+  position: fixed; 
+  top: 20px;
+  right: 20px;
+  background-color: red;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 5px;
+  z-index: 1000; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

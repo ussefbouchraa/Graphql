@@ -1,0 +1,79 @@
+export const components = {}
+
+components.login = () => {
+
+    return `
+        <nav class="navbar"> </nav>
+            <div class="popup-container" style="display:none ">
+                <h2>Error</h2> <p class="popup-error-message"></p>
+            </div>
+        <form class="form" action="">
+            <section class="section_usr"><label>username:</label><input type="text" class="username"
+                    placeholder="username" required> </section>
+            <section class="section_pass"><label>password:</label> <input type="password" class="password"
+                    placeholder="password" required> </section>
+            <section class="section_btn"> <input type="submit" value="Login" class="btn_login"></section>
+        </form>
+    `
+}
+
+components.profile = (user) => {
+        if (!user) {
+        return `
+            <div id="profile-container">
+                <p>Loading...</p>
+                <button id="logout-btn">Logout</button>
+            </div>
+        `;
+    }
+    return `     
+    <nav class="navbar"> </nav>
+    <div class="popup-container" style="display:none ">
+        <h2>Error</h2> <p class="popup-error-message"></p>
+    </div>
+   <div id="profile-container">
+            <h1>Welcome, ${user.firstName} ${user.lastName}</h1>
+            <p>Login: ${user.login}</p>
+            <p>Email: ${user.email}</p>
+            <button id="logout-btn">Logout</button>
+        </div>
+}`
+}
+
+
+components.statusPage = (statusCode) => {
+    const statusMessages = {
+        "404": {
+            title: "Page Not Found",
+            message: "The page you're looking for doesn't exist.",
+            icon: "🔍"
+        },
+        "403": {
+            title: "Access Denied",
+            message: "You don't have permission to access this page.",
+            icon: "🚫"
+        },
+        "500": {
+            title: "Server Error",
+            message: "Something went wrong on our end. Please try again later.",
+            icon: "⚙️"
+        },
+
+    };
+    const statusItem = statusMessages[statusCode]
+
+    return `
+        <nav class="navbar"> </nav>
+        <div class="popup-container" style="display:none ">
+            <h2>Error</h2> <p class="popup-error-message"></p>
+        </div>
+                
+        <section id="status-info">
+            <h2 class="status-title"> '${statusItem.title}'</h2>
+            <p class="status-msg"> '${statusItem.message}'</p>
+            <mark class="">'${statusItem.icon}' </mark>
+        </section>
+                
+        </div>`
+
+}
