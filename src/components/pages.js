@@ -20,6 +20,7 @@ components.login = () => {
 components.profile = (user) => {
         if (!user) {
         return `
+        <h1>Loading...</h1>
             <div id="profile-container">
                 <p>Loading...</p>
                 <button id="logout-btn">Logout</button>
@@ -41,26 +42,7 @@ components.profile = (user) => {
 }
 
 
-components.statusPage = (statusCode) => {
-    const statusMessages = {
-        "404": {
-            title: "Page Not Found",
-            message: "The page you're looking for doesn't exist.",
-            icon: "🔍"
-        },
-        "403": {
-            title: "Access Denied",
-            message: "You don't have permission to access this page.",
-            icon: "🚫"
-        },
-        "500": {
-            title: "Server Error",
-            message: "Something went wrong on our end. Please try again later.",
-            icon: "⚙️"
-        },
-
-    };
-    const statusItem = statusMessages[statusCode]
+components.statusPage = (statusMsg) => {
 
     return `
         <nav class="navbar"> </nav>
@@ -69,9 +51,9 @@ components.statusPage = (statusCode) => {
         </div>
                 
         <section id="status-info">
-            <h2 class="status-title"> '${statusItem.title}'</h2>
-            <p class="status-msg"> '${statusItem.message}'</p>
-            <mark class="">'${statusItem.icon}' </mark>
+            <h2 class="status-title">${statusMsg.title}</h2>
+            <p class="status-msg">${statusMsg.message}</p>
+            <mark class="status-icon">${statusMsg.icon}</mark>
         </section>
                 
         </div>`

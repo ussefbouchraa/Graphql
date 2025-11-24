@@ -19,19 +19,17 @@ tokens.getToken = () => {
 
 tokens.checkToken = async (tokenValue) => {
     try {
-        const res = await fetch("https://learn.zone01oujda.ma/api/graphql", {
+        const res = await fetch("https://learn.zone01oujda.ma/api/graphql-engine/v1/graphql", {
             method: "POST",
             headers: {
+                'Content-Type': 'application/json',
                 "Authorization": "Bearer " + tokenValue,
-                "Content-Type": "application/json"
             },
-            // A GraphQL endpoint requires a query in the body.
-            body: JSON.stringify({ query: "{ __typename }" })
+            body: JSON.stringify({ query: `{user{id}}` })
         });
 
-        return res.ok;
+        return res.ok && !(await res.json()).errors;
     } catch {
         return false;
     }
 }
-

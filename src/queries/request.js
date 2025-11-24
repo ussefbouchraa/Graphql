@@ -11,7 +11,7 @@ export  const graphQLRequest = async  (query, variables = {}) => {
         return
     }
 
-    const res = await fetch("https://learn.zone01oujda.ma/api/graphql", {
+    const res = await fetch("https://learn.zone01oujda.ma/api/graphql-engine/v1/graphql", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
