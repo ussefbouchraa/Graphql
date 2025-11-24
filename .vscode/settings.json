@@ -1,5 +1,0 @@
-{
-    "liveServer.settings.port": 5501, // Optional: set a port
-    "liveServer.settings.root": "/", // Serve from the project root
-    "liveServer.settings.file": "index.html" // Fallback to index.html for SPA routing
-}

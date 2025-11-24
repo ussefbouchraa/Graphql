@@ -3,8 +3,7 @@ export const components = {}
 components.login = () => {
 
     return `
-        <nav class="navbar"> </nav>
-            <div class="popup-container" style="display:none ">
+            <div class="popup-container" style="display:none" >
                 <h2>Error</h2> <p class="popup-error-message"></p>
             </div>
         <form class="form" action="">
@@ -28,7 +27,6 @@ components.profile = (user) => {
         `;
     }
     return `     
-    <nav class="navbar"> </nav>
     <div class="popup-container" style="display:none ">
         <h2>Error</h2> <p class="popup-error-message"></p>
     </div>

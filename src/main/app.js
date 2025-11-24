@@ -12,7 +12,7 @@ window.addEventListener("storage", async (e) => {
     if (e.key === "jwt_token") {
         if (e.newValue) {
             const valid = await tokens.checkToken(e.newValue);
-            (valid) ? navigate("/profile") : handleLogout();
+            (valid) ? navigate("/profile") : navigate("/login");
         }else{ handleLogout();}
     }
 });
