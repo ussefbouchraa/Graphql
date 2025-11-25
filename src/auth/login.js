@@ -17,7 +17,7 @@ export async function handleLogin(event) {
     const password = passwordInput.value.trim();
 
     try {
-        // Base64 encode the credentials for Basic Authentication
+        // Base64 encode the credentials for  Authentication
         const credentials = btoa(`${username}:${password}`);
 
         const response = await fetch(API_URL, {

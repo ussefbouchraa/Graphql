@@ -20,14 +20,12 @@ window.addEventListener("storage", async (e) => {
 
 
 document.addEventListener('click', (e) => {
-    // Handle logout button clicks
     if (e.target.matches('#logout-btn')) {
         handleLogout();
     }
 });
 
 document.addEventListener('submit', (e) => {
-    // Handle login form submission
     if (e.target.matches('form.form')) {
         handleLogin(e);
     }

@@ -1,4 +1,9 @@
-    export const userProfileQuery = `
+   
+   export const queries = {} 
+   
+   
+   
+   queries.userProfileQuery =`
         query {
             user {
                 id
@@ -7,5 +12,16 @@
                 lastName
                 email
             }
+            transaction(where: {type: {_eq: "xp"}}) {
+                amount
+            }
+            progress {
+                object {
+                    name
+                    type
+                }
+                grade
+            }
         }
     `;
+
