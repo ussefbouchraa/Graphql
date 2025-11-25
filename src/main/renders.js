@@ -36,33 +36,25 @@ renders.profile = async () => {
         
         const user = response.data.user[0];
         
-        // Calculate total XP
+        // Calculate totals from transactions
         const transactions = response.data.transaction || [];
-        const totalXP = transactions.reduce((sum, t) => sum + (Number(t.amount) || 0), 0);
+        const totals = transactions.reduce((acc, t) => {
+            const amount = Number(t.amount) || 0;
+            if (t.type === "xp") acc.xp += amount;
+            if (t.type === "up") acc.auditUp += amount;
+            if (t.type === "down") acc.auditDown += amount;
+            return acc;
+        }, { xp: 0, auditUp: 0, auditDown: 0 });
+        const auditRatio = totals.auditDown > 0 ? (totals.auditUp / totals.auditDown) : null;
+
+        const auditStats = {
+            up: totals.auditUp,
+            down: totals.auditDown,
+            ratio: auditRatio
+        };
+        console.log(totals, auditRatio);
         
-        // Extract skills from progress (projects/exercises with grade > 0)
-        const progress = response.data.progress || [];
-        const skillsMap = new Map();
-        
-        progress.forEach(p => {
-            if (p?.object && Number(p.grade) > 0) {
-                const skillName = p.object.name || 'Unknown';
-                const skillType = p.object.type || 'unknown';
-                
-                if (!skillsMap.has(skillName)) {
-                    skillsMap.set(skillName, {
-                        name: skillName,
-                        type: skillType,
-                        count: 0
-                    });
-                }
-                skillsMap.get(skillName).count++;
-            }
-        });
-        
-        const skills = Array.from(skillsMap.values()).sort((a, b) => b.count - a.count);
-        
-        app.innerHTML = components.profile(user, totalXP, skills);
+        app.innerHTML = components.profile(user, totals.xp, auditStats);
     } catch (error) {
         console.error("Profile render error:", error);
         renders.popupError("An unexpected error occurred. Please try again.");

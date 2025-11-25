@@ -12,15 +12,9 @@
                 lastName
                 email
             }
-            transaction(where: {type: {_eq: "xp"}}) {
+            transaction(where: {type: {_in: ["xp", "up", "down"]}}) {
                 amount
-            }
-            progress {
-                object {
-                    name
-                    type
-                }
-                grade
+                type
             }
         }
     `;

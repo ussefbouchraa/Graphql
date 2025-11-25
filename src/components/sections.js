@@ -46,25 +46,26 @@ sections.xpAmount = (totalXP = 0) => {
     `
 }
 
-sections.skills = (skills = []) => {
-    const skillsHTML = skills.length > 0 
-        ? skills.map(skill => `
-            <div class="skill-item">
-                <span class="skill-name">${skill.name || 'Unknown'}</span>
-                <span class="skill-type">${skill.type || 'unknown'}</span>
-                <span class="skill-count">${skill.count || 0} completed</span>
-            </div>
-        `).join('')
-        : '<p class="no-skills">No skills data available</p>';
+sections.audits = (stats = { up: 0, down: 0, ratio: null }) => {
+    const ratioDisplay = stats.ratio ? stats.ratio.toFixed(2) : 'N/A';
 
     return `
-        <section class="profile-section skills-section">
+        <section class="profile-section audits-section">
             <div class="section-header">
-                <h2 class="section-title">🎯 Skills</h2>
+                <h2 class="section-title">🛡️ Audits</h2>
             </div>
-            <div class="section-content">
-                <div class="skills-list">
-                    ${skillsHTML}
+            <div class="section-content audit-content">
+                <div class="audit-item up">
+                    <span class="audit-label">Given</span>
+                    <span class="audit-value">${stats.up?.toLocaleString() || 0}</span>
+                </div>
+                <div class="audit-item down">
+                    <span class="audit-label">Received</span>
+                    <span class="audit-value">${stats.down?.toLocaleString() || 0}</span>
+                </div>
+                <div class="audit-item ratio">
+                    <span class="audit-label">Ratio</span>
+                    <span class="audit-value">${ratioDisplay}</span>
                 </div>
             </div>
         </section>
