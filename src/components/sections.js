@@ -38,7 +38,7 @@ sections.xpAmount = (totalXP = 0) => {
             </div>
             <div class="section-content">
                 <div class="xp-display">
-                    <div class="xp-value">${Number(totalXP).toLocaleString()}</div>
+                    <div class="xp-value">${((totalXP)/ 1000000).toFixed(2)}</div>
                     <div class="xp-label">Total Experience Points</div>
                 </div>
             </div>
@@ -47,8 +47,8 @@ sections.xpAmount = (totalXP = 0) => {
 }
 
 sections.audits = (stats = { up: 0, down: 0, ratio: null }) => {
-    const ratioDisplay = stats.ratio ? stats.ratio.toFixed(2) : 'N/A';
-
+    const ratioDisplay = stats.ratio ? stats.ratio.toFixed(1) : 'N/A';
+    
     return `
         <section class="profile-section audits-section">
             <div class="section-header">
@@ -57,11 +57,11 @@ sections.audits = (stats = { up: 0, down: 0, ratio: null }) => {
             <div class="section-content audit-content">
                 <div class="audit-item up">
                     <span class="audit-label">Given</span>
-                    <span class="audit-value">${stats.up?.toLocaleString() || 0}</span>
+                    <span class="audit-value">${stats.up || 0}</span>
                 </div>
                 <div class="audit-item down">
                     <span class="audit-label">Received</span>
-                    <span class="audit-value">${stats.down?.toLocaleString() || 0}</span>
+                    <span class="audit-value">${stats.down || 0}</span>
                 </div>
                 <div class="audit-item ratio">
                     <span class="audit-label">Ratio</span>

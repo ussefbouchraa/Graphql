@@ -48,11 +48,11 @@ renders.profile = async () => {
         const auditRatio = totals.auditDown > 0 ? (totals.auditUp / totals.auditDown) : null;
 
         const auditStats = {
-            up: totals.auditUp,
-            down: totals.auditDown,
+            up: (totals.auditUp / 1000000).toFixed(2),
+            down: (totals.auditDown/ 1000000).toFixed(2),
             ratio: auditRatio
         };
-        console.log(totals, auditRatio);
+        console.log(auditStats);
         
         app.innerHTML = components.profile(user, totals.xp, auditStats);
     } catch (error) {

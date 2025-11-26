@@ -216,6 +216,12 @@ input:focus {
     margin: 0;
 }
 
+.profile-sections{
+    display:flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 /* Profile Header */
 .profile-header {
     display: flex;
@@ -260,12 +266,6 @@ input:focus {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-.profile-sections {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 25px;
-    margin-top: 20px;
-}
 
 .profile-section {
     background: white;
@@ -274,7 +274,6 @@ input:focus {
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     overflow: hidden;
-    position: relative;
 }
 
 .profile-section:hover {
@@ -292,7 +291,7 @@ input:focus {
     font-size: 22px;
     font-weight: 700;
     color: #333;
-    margin: 0;
+    text-align: start;    
 }
 
 .section-content {
@@ -358,9 +357,9 @@ input:focus {
 
 /* Skills Section */
 .audit-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-    gap: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px; 
 }
 
 .audit-item {
@@ -399,9 +398,6 @@ input:focus {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .profile-sections {
-        grid-template-columns: 1fr;
-    }
     
     #profile-container {
         padding: 15px;
