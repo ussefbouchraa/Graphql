@@ -21,10 +21,7 @@ sections.userInfo = (user = {}) => {
                     <span class="info-label">Email:</span>
                     <span class="info-value">${user.email || 'N/A'}</span>
                 </div>
-                <div class="info-item">
-                    <span class="info-label">User ID:</span>
-                    <span class="info-value">${user.id || 'N/A'}</span>
-                </div>
+
             </div>
         </section>
     `
@@ -38,7 +35,7 @@ sections.xpAmount = (totalXP = 0) => {
             </div>
             <div class="section-content">
                 <div class="xp-display">
-                    <div class="xp-value">${((totalXP)/ 1000000).toFixed(2)}</div>
+                    <div class="xp-value">${(totalXP) }</div>
                     <div class="xp-label">Total Experience Points</div>
                 </div>
             </div>
@@ -52,7 +49,7 @@ sections.audits = (stats = { up: 0, down: 0, ratio: null }) => {
     return `
         <section class="profile-section audits-section">
             <div class="section-header">
-                <h2 class="section-title">🛡️ Audits</h2>
+                <h2 class="section-title">🛡️ Audits Ratio</h2>
             </div>
             <div class="section-content audit-content">
                 <div class="audit-item up">

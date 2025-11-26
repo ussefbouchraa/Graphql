@@ -6,7 +6,6 @@
    queries.userProfileQuery =`
         query {
             user {
-                id
                 login
                 firstName
                 lastName
@@ -19,3 +18,4 @@
         }
     `;
 
+   
