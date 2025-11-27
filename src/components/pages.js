@@ -1,3 +1,4 @@
+import { graphs } from './graphs.js';
 import { sections } from './sections.js';
 
 export const components = {}
@@ -38,6 +39,9 @@ components.profile = (user, gradeStats = {}, auditStats = {}) => {
                 ${sections.levelAmount(gradeStats.level)}
             </div>
                 ${sections.audits(auditStats)}
+                ${graphs.svg1()}
+                ${graphs.svg2()}
+
             </div>
         </div>
     `
