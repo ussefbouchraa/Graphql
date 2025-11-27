@@ -1,40 +1,39 @@
-   
-   export const queries = {} 
-   
-   
-   
-   queries.userProfileQuery =`
-        query {
-            user {
-                login
-                firstName
-                lastName
-                email
-            }
-            transaction(where: {type: {_in: ["xp", "up", "down"]}}) {
-                amount
-                type
-            }
-        }
-    `;
 
-        //    query {
-        //     user {
-        //         id
-        //         login
-        //         firstName
-        //         lastName
-        //         email
-        //     }
-        //     transaction(where: {
-        //       type: {_eq:"xp"},
-        //       _or:[
-        //       	{object: {type : {_eq:"project"}, name:{_nlike:"quest%"}}},
-        //         {object:{type:{_eq:"piscine"}}},
-        //         {object:{type:{_eq:"module"}}}
-        //     	]
-        //     }){
-        //         amount
-        //         type
-        //     }
-        // }
+export const queries = {}
+
+
+
+queries.userProfileQuery = `
+query {
+  user {
+    login
+    firstName
+    lastName
+    email
+  }
+
+  transaction(
+    where: {
+      _or: [
+        {
+          type: { _in: ["xp", "level"] },
+          object: {
+            _or: [
+              { type: { _eq: "project" }, name: { _nlike: "quest%" } },
+              { type: { _eq: "piscine" } },
+              { type: { _eq: "module" } }
+            ]
+          }
+        },
+                
+        { type: { _eq: "up" } },
+        { type: { _eq: "down" } }
+      ]
+    }
+  ) {
+    amount
+    type
+  }
+}
+
+    `;

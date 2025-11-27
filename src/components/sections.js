@@ -36,12 +36,32 @@ sections.xpAmount = (totalXP = 0) => {
             <div class="section-content">
                 <div class="xp-display">
                     <div class="xp-value">${(totalXP) }</div>
-                    <div class="xp-label">Total Experience Points</div>
+                    <div class="xp-label">Total XP Points</div>
                 </div>
             </div>
         </section>
     `
 }
+
+sections.levelAmount = (level = 0) => {
+    return `
+        <section class="profile-section level-section">
+            <div class="section-header">
+                <h2 class="section-title">📈 Level Amount</h2>
+            </div>
+            <div class="section-content">
+                <div class="level-display">
+                    <div class="level-value">${level}</div>
+                    <div class="level-label">Level Grade</div>
+                </div>
+            </div>
+        </section>
+    `
+}
+
+
+
+
 
 sections.audits = (stats = { up: 0, down: 0, ratio: null }) => {
     const ratioDisplay = stats.ratio ? stats.ratio.toFixed(1) : 'N/A';

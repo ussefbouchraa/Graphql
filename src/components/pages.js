@@ -24,7 +24,7 @@ components.login = () => {
     `
 }
 
-components.profile = (user, totalXP = 0, auditStats = {}) => {
+components.profile = (user, gradeStats = {}, auditStats = {}) => {
     return `     
         ${components.popupError("")}
         <div id="profile-container">
@@ -33,7 +33,10 @@ components.profile = (user, totalXP = 0, auditStats = {}) => {
             </nav>
             <div class="profile-sections">
                 ${sections.userInfo(user)}  
-                ${sections.xpAmount(totalXP)}
+            <div class="section-container" >
+                ${sections.xpAmount(gradeStats.Xp)}
+                ${sections.levelAmount(gradeStats.level)}
+            </div>
                 ${sections.audits(auditStats)}
             </div>
         </div>
