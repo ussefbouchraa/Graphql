@@ -3,7 +3,7 @@ import { tokens } from "../auth/token.js";
 import { handleLogout } from "../auth/login.js";
 
 
-export  const graphQLRequest = async  (query, variables = {}) => {
+export  const graphQLRequest = async (query) => {
     const token = tokens.getToken();
     if (!token) {
         handleLogout()
@@ -17,7 +17,7 @@ export  const graphQLRequest = async  (query, variables = {}) => {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         },
-        body: JSON.stringify({ query, variables })
+        body: JSON.stringify({ query})
     });
 
     return res.json();

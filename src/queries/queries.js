@@ -2,8 +2,15 @@
 export const queries = {}
 
 
+queries.SCHEMA_QUERY = {
+    query: `{
+        __schema {
+            queryType { fields { name} }
+        }
+    }`
+};
 
-queries.userProfileQuery = `
+queries.USER_PROFILE_QUERY = `
 query {
   user {
     login
@@ -37,3 +44,14 @@ query {
 }
 
     `;
+
+queries.SKILLS_QUERY = {
+    query: `{
+        transaction( where: { type: {_ilike: "%skill%"}}
+            order_by: {amount: desc}
+        ){
+            type
+            amount
+        }
+    }`
+};

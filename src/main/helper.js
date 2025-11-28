@@ -36,3 +36,13 @@ export const calcTransaction = (transactions) => {
     }
 
 }
+
+
+export function prepareSkills(data) {
+    return data.map(item => {
+        return {
+            name: item.type.replace("skill-", ""),
+            xp: item.amount
+        }
+    });
+}

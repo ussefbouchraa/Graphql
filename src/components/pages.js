@@ -5,31 +5,34 @@ export const components = {}
 
 components.login = () => {
     return `
-        ${components.popupError("")}
         <div id="login-container">
-            <nav class="login-header"> <h1>Login</h1></nav>
-            <form class="form" action="">
-                <section class="section_usr">
+            <nav class="login-header">
+                <div class="logo"> <img src="../../static/logo.png"></img></div>
+                <h1>||</h1>
+                </nav>
+            <form class="form" >
+                <header class="form-head"> Login</header> <br>
+                <section class="log-section">
                     <label>username:</label>
                     <input type="text" class="username" placeholder="username" required>
                 </section>
-                <section class="section_pass">
+                <section class="log-section">
                     <label>password:</label>
                     <input type="password" class="password" placeholder="password" required>
                 </section>
-                <section class="section_btn">
-                    <input type="submit" value="Login" class="btn_login">
+                <section class="log-section">
+                <input type="submit" value="Login" class="btn_login">
                 </section>
-            </form>
+                </form>
         </div>
     `
 }
 
-components.profile = (user, gradeStats = {}, auditStats = {}) => {
+components.profile = (user, gradeStats = {}, auditStats = {}, skillStats = []) => {    
     return `     
-        ${components.popupError("")}
         <div id="profile-container">
             <nav class="profile-header">
+                <div class="logo"> <img src="../../static/logo.png"></img></div>
                 <button id="logout-btn" class="logout-btn">Logout</button>
             </nav>
             <div class="profile-sections">
@@ -39,8 +42,7 @@ components.profile = (user, gradeStats = {}, auditStats = {}) => {
                 ${sections.levelAmount(gradeStats.level)}
             </div>
                 ${sections.audits(auditStats)}
-                ${graphs.svg1()}
-                ${graphs.svg2()}
+                ${graphs.skills(skillStats)}
 
             </div>
         </div>
@@ -49,7 +51,6 @@ components.profile = (user, gradeStats = {}, auditStats = {}) => {
 
 components.statusPage = (statusMsg) => {
     return `
-        ${components.popupError("")}
         <div id="status-container">
         <section id="status-info">
             <nav class="status-header"> <h1>Status Code</h1></nav>
@@ -59,15 +60,5 @@ components.statusPage = (statusMsg) => {
             <a class="status-btn" href="/profile" data-link>Go Back</a>
             </section>
      </div>
-    `
-}
-
-
-components.popupError = (errorMsg = "") => {
-    return `
-        <div class="popup-container" style="display:none">
-            <h2>Error</h2>
-            <p class="popup-error-message">${errorMsg}</p>
-        </div>
     `
 }
