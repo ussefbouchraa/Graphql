@@ -38,11 +38,15 @@ export const calcTransaction = (transactions) => {
 }
 
 
-export function prepareSkills(data) {
-    return data.map(item => {
-        return {
-            name: item.type.replace("skill-", ""),
-            xp: item.amount
-        }
+export function prepareSkills(data) {    
+const map = new Map()
+const arr = [];
+    for(const obj of data){
+        map.set(obj.type.replace("skill-", ""), obj.amount)
+    }
+    map.forEach((value, key) => {
+        arr.push({ name: key, xp: value });
     });
+    
+return arr
 }

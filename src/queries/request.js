@@ -10,14 +10,14 @@ export  const graphQLRequest = async (query) => {
         console.error("No token found for GraphQL request");
         return
     }
-
+    
     const res = await fetch("https://learn.zone01oujda.ma/api/graphql-engine/v1/graphql", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
         },
-        body: JSON.stringify({ query})
+        body: JSON.stringify({query})
     });
 
     return res.json();
