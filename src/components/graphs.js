@@ -3,52 +3,44 @@ export const graphs = {}
 
 
 graphs.skills = (skills) => {
-    const max = Math.max(...skills.map(s => s.amount))
+    
+    
+    let max = -Infinity;
+    let y = 0;
+    for (const [name, amount] of skills) { if (amount > max) max = amount; }
 
     let svg = `
-    <section class="graph-section svg1-section">
-    <div class="section-header"> </div>
-    <div class="section-content">
-    <svg width="400" height="200">`
-
-    let x = 20
-
-    skills.forEach(s => {
-        const barHeight = (s.amount / max) * 150
+        <section class="graph-section svg1-section">
+        <div class="section-header"> <h2 class="section-title">⭐ Skills Progress </h2> </div>
+        <div class="section-content">
+        <svg class="svg" width="100%" height="${skills.size * 50}">
+    `;
+    
+    skills.forEach((amount, name) => {
+        const percent = (amount / max) * 100;
 
         svg += `
-        <rect x="${x}" y="${180 - barHeight}" width="40" height="${barHeight}" fill="blue"></rect>
-        <text x="${x}" y="190" font-size="10">${s.type}</text>
-        <text x="${x}" y="${170 - barHeight}" font-size="10">${s.amount}</text>
-    `
-        x += 60
-    })
+            <text x="0" y="${y + 10}" font-size="12" fill="gray">${name}</text> <text  x="92%" y="${y + 10}" font-size="12" fill="gray">${percent.toFixed()}%</text>
+            <rect x="0" y="${y + 20}" width="100%" height="20" fill="#ddd" />
+            <rect x="0" y="${y + 20}" rx ="5" width="${percent}%" height="20" fill="#b5be2eff" />
+        `;
 
-    svg += `</svg>
-            </div>
-            </section>`
-            
-    return svg
+        y += 50;
+    });
 
-    // return `
-    // <section class="graph-section svg1-section">
-    // <div class="section-header"> </div>
-    // <div class="section-content">
-    // <svg width="300" height="200" viewBox="0 0 300 200"
-    // <rect x="20" y="30" width="40" height="100" fill="blue" />
-    // <text x="20" y="150">Go</text>
-    // <text x="20" y="20">1200</text>
-    // </svg>
-    // </div>
-    // </section>
-    // `
+    svg += `
+        </svg>
+        </div>
+        </section>
+        `;
+
+    return svg;
+};
 
 
+graphs.audit = (audits) => {
 
-}
-
-graphs.svg2 = () => {
-
+    
     return `
 
         <section class="graph-section svg2-section">

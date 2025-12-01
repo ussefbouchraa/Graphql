@@ -454,6 +454,7 @@ input[type="password"] {
     text-align: center;
     color: #fff;
     font-weight: 600;
+    opacity: 0.5;
 }
 
 .audit-item.up {
@@ -531,7 +532,6 @@ input[type="password"] {
     .xp-value {
         font-size: 36px;
     }
-
 
 }
 

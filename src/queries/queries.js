@@ -53,3 +53,21 @@ queries.SKILLS_QUERY = `
             amount
         }
     }`;
+
+
+    queries.AUDIT_QUERY = `
+    query{
+        user {
+            audits_aggregate(where: {closureType: {_eq: succeeded}}) {
+                aggregate {
+                    count
+                }
+            }
+            failed_audits: audits_aggregate(where: {closureType: {_eq: failed}}) {
+                aggregate {
+                    count
+                }
+            }
+        }
+    }`
+

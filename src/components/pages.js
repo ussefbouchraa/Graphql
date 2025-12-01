@@ -28,7 +28,7 @@ components.login = () => {
     `
 }
 
-components.profile = (user, gradeStats = {}, auditStats = {}, skillStats = []) => {    
+components.profile = (user, gradeStats = {}, ratioStats = {},  skillsProg = [], auditStat = [] ) => {    
     return `     
         <div id="profile-container">
             <nav class="profile-header">
@@ -41,8 +41,9 @@ components.profile = (user, gradeStats = {}, auditStats = {}, skillStats = []) =
                 ${sections.xpAmount(gradeStats.Xp)}
                 ${sections.levelAmount(gradeStats.level)}
             </div>
-                ${sections.audits(auditStats)}
-                ${graphs.skills(skillStats)}
+                ${sections.ratio(ratioStats)}
+                ${graphs.skills(skillsProg)}
+                ${graphs.audit(skillsProg)}
 
             </div>
         </div>

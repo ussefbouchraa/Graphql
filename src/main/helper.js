@@ -24,7 +24,7 @@ export const calcTransaction = (transactions) => {
     }, { xp: 0, auditUp: 0, auditDown: 0, level: 0 });
 
     return {
-        auditStats: {
+        ratioStats: {
             up:    calc(totals.auditUp),
             down:  calc(totals.auditDown),
             ratio: totals.auditDown > 0 ? (totals.auditUp / totals.auditDown) : null
@@ -42,11 +42,21 @@ export function prepareSkills(data) {
 const map = new Map()
 const arr = [];
     for(const obj of data){
-        map.set(obj.type.replace("skill-", ""), obj.amount)
+        map.set((obj.type).replace("skill_", ""), obj.amount)
     }
-    map.forEach((value, key) => {
-        arr.push({ name: key, xp: value });
-    });
     
-return arr
+return map
+}
+
+
+export function countAudits(data){
+    
+    console.log(data)
+    if (!data?.data?.[0].lenght) return  []
+    
+    const validated = data[0].audits_aggregate.aggregate.count;
+    const failed = data[1].failed_audits.aggregate.count;
+
+    return  {validated , failed }
+
 }

@@ -63,7 +63,7 @@ sections.levelAmount = (level = 0) => {
 
 
 
-sections.audits = (stats = { up: 0, down: 0, ratio: null }) => {
+sections.ratio = (stats = { up: 0, down: 0, ratio: null }) => {
     const ratioDisplay = stats.ratio ? stats.ratio.toFixed(1) : 'N/A';
     
     return `
