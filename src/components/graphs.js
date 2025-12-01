@@ -13,19 +13,20 @@ graphs.skills = (skills) => {
         <section class="graph-section svg1-section">
         <div class="section-header"> <h2 class="section-title">⭐ Skills Progress </h2> </div>
         <div class="section-content">
-        <svg class="svg" width="100%" height="${skills.size * 50}">
+        <svg class="svg" width="100%" height="${skills.size * 60}">
     `;
     
     skills.forEach((amount, name) => {
         const percent = (amount / max) * 100;
 
         svg += `
-            <text x="0" y="${y + 10}" font-size="12" fill="gray">${name}</text> <text  x="92%" y="${y + 10}" font-size="12" fill="gray">${percent.toFixed()}%</text>
-            <rect x="0" y="${y + 20}" width="100%" height="20" fill="#ddd" />
-            <rect x="0" y="${y + 20}" rx ="5" width="${percent}%" height="20" fill="#b5be2eff" />
+            <text x="0" y="${y + 10}" font-size="18" fill="gray">${name}</text>
+            <rect x="0" y="${y + 20}" width="100%" height="25" fill="#ddd" />
+            <rect x="0" y="${y + 20}" rx ="5" width="${percent}%" height="25" fill="#b5be2eff" />
+            <text  x="92%" y="${y + 39}" font-size="18" fill="gray">${percent.toFixed()}%</text>
         `;
 
-        y += 50;
+        y += 60;
     });
 
     svg += `
