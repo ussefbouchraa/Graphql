@@ -39,20 +39,26 @@ graphs.skills = (skills) => {
 
 
 graphs.audit = (audits) => {
+console.log(audits)
+    const validated = audits.validated || 0;
+    const failed = audits.failed || 0;
+    const total = validated + failed;
 
-    
-    return `
+    let svg = `
+        <section class="graph-section svg1-section">
+        <div class="section-header"> <h2 class="section-title">📊 Audit Stats </h2> </div>
+        <div class="section-content">
+        <svg class="svg" width="100%" height="${400}">
+        <circle r="200" cx="50%" cy="200" fill="black"/> 
+         <circle r="100" cx="50%" cy="200" fill="white"/> 
 
-        <section class="graph-section svg2-section">
-
-            <div class="section-header"> </div>
-
-            <div class="section-content"></div>
-
+        </svg>
+        </div>
         </section>
+    
+    `;
 
-    `
-
+    return svg;
 }
 
 

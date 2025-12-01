@@ -28,7 +28,7 @@ components.login = () => {
     `
 }
 
-components.profile = (user, gradeStats = {}, ratioStats = {},  skillsProg = [], auditStat = [] ) => {    
+components.profile = (user, gradeStats = {}, ratioStats = {},  skillsProg = [], auditStat = {} ) => {    
     return `     
         <div id="profile-container">
             <nav class="profile-header">
@@ -43,7 +43,7 @@ components.profile = (user, gradeStats = {}, ratioStats = {},  skillsProg = [], 
             </div>
                 ${sections.ratio(ratioStats)}
                 ${graphs.skills(skillsProg)}
-                ${graphs.audit(skillsProg)}
+                ${graphs.audit(auditStat)}
 
             </div>
         </div>

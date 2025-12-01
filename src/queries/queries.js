@@ -59,14 +59,10 @@ queries.SKILLS_QUERY = `
     query{
         user {
             audits_aggregate(where: {closureType: {_eq: succeeded}}) {
-                aggregate {
-                    count
-                }
+                aggregate { count }
             }
             failed_audits: audits_aggregate(where: {closureType: {_eq: failed}}) {
-                aggregate {
-                    count
-                }
+                aggregate { count }
             }
         }
     }`

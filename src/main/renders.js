@@ -30,7 +30,7 @@ renders.profile = async () => {
         const transStats = calcTransaction(response.data.transaction || [])
         const skillsProg = prepareSkills(response1.data.transaction || [])
         const auditStat = countAudits(response2.data.user) || [];
-         
+
         app.innerHTML = components.profile(user, transStats.gradeStats, transStats.ratioStats, skillsProg, auditStat);
     } catch (err) {
         renders.popupError(err.message || "An unexpected error occurred. Please try again");

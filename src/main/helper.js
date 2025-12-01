@@ -49,14 +49,13 @@ return map
 }
 
 
-export function countAudits(data){
+export function countAudits(res){
     
-    console.log(data)
-    if (!data?.data?.[0].lenght) return  []
+    if (!res?.[0]?.audits_aggregate?.aggregate?.count) return  {}
     
-    const validated = data[0].audits_aggregate.aggregate.count;
-    const failed = data[1].failed_audits.aggregate.count;
-
+    const validated = res[0].audits_aggregate.aggregate.count;
+    const failed = res[0].failed_audits.aggregate.count;
+    
     return  {validated , failed }
 
 }
