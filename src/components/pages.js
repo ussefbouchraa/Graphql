@@ -28,7 +28,10 @@ components.login = () => {
     `
 }
 
-components.profile = (user, gradeStats = {}, ratioStats = {},  skillsProg = [], auditStat = {} ) => {    
+components.profile = (userInfo, transStats = {},  skillsProg = [], auditStat = {} ) => {    
+    
+    const ratioStats = transStats.ratioStats || {}
+    const gradeStats = transStats.gradeStats || {}
     return `     
         <div id="profile-container">
             <nav class="profile-header">
@@ -36,14 +39,14 @@ components.profile = (user, gradeStats = {}, ratioStats = {},  skillsProg = [], 
                 <button id="logout-btn" class="logout-btn">Logout</button>
             </nav>
             <div class="profile-sections">
-                ${sections.userInfo(user)}  
+                ${sections.userInfo(userInfo)}  
             <div class="section-container" >
                 ${sections.xpAmount(gradeStats.Xp)}
                 ${sections.levelAmount(gradeStats.level)}
             </div>
                 ${sections.ratio(ratioStats)}
-                ${graphs.skills(skillsProg)}
-                ${graphs.audit(auditStat)}
+                ${graphs.progressChart(skillsProg)}
+                ${graphs.donutChart(auditStat)}
 
             </div>
         </div>

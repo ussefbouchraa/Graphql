@@ -50,8 +50,7 @@ return map
 
 
 export function countAudits(res){
-    
-    if (!res?.[0]?.audits_aggregate?.aggregate?.count) return  {}
+    if (!res?.[0]?.audits_aggregate?.aggregate?.count) return {}
     
     const validated = res[0].audits_aggregate.aggregate.count;
     const failed = res[0].failed_audits.aggregate.count;

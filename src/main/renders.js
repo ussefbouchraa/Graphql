@@ -26,12 +26,12 @@ renders.profile = async () => {
         if (response.errors || response1.errors || !response2) { throw new Error( (response.errors?.[0]?.message) || (response1.errors?.[0]?.message) || "Failed to fetch data user.")}
         if (!response.data?.user?.length || !response1.data?.transaction?.length || !response2.data?.user ) { throw new Error( "Failed to fetch data user." ) }
 
-        const user = response.data.user[0];
-        const transStats = calcTransaction(response.data.transaction || [])
+        const userInfo = response.data.user[0];
+        const transactionStats = calcTransaction(response.data.transaction || [])
         const skillsProg = prepareSkills(response1.data.transaction || [])
-        const auditStat = countAudits(response2.data.user) || [];
+        const auditStats = countAudits(response2.data.user) || [];
 
-        app.innerHTML = components.profile(user, transStats.gradeStats, transStats.ratioStats, skillsProg, auditStat);
+        app.innerHTML = components.profile(userInfo, transactionStats, skillsProg, auditStats);
     } catch (err) {
         renders.popupError(err.message || "An unexpected error occurred. Please try again");
     }
