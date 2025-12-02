@@ -9,7 +9,6 @@ tokens.setToken = (value) => {
 
 tokens.removeToken = () => {
     localStorage.removeItem("jwt_token");
-    console.log("Token removed");
 }
 
 tokens.getToken = () => {

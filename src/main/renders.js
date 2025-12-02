@@ -18,18 +18,24 @@ renders.profile = async () => {
     if (!app) return;
 
     try {
-        const response  = await graphQLRequest(queries.USER_PROFILE_QUERY);
-        const response1 = await graphQLRequest(queries.SKILLS_QUERY);
-        const response2 = await graphQLRequest(queries.AUDIT_QUERY);
+        const [userResponse, skillsResponse, auditResponse] = await Promise.all([
+            graphQLRequest(queries.USER_PROFILE_QUERY),
+            graphQLRequest(queries.SKILLS_QUERY),
+            graphQLRequest(queries.AUDIT_QUERY),
+        ]);
 
-        if (!response || !response1 || !response2) { throw new Error( "No response from server. Please try again." ) }
-        if (response.errors || response1.errors || !response2) { throw new Error( (response.errors?.[0]?.message) || (response1.errors?.[0]?.message) || "Failed to fetch data user.")}
-        if (!response.data?.user?.length || !response1.data?.transaction?.length || !response2.data?.user ) { throw new Error( "Failed to fetch data user." ) }
+        const userInfo = userResponse?.data?.user?.[0];
+        const transactions = userResponse?.data?.transaction || [];
+        const skills = skillsResponse?.data?.transaction || [];
+        const auditUsers = auditResponse?.data?.user;
 
-        const userInfo = response.data.user[0];
-        const transactionStats = calcTransaction(response.data.transaction || [])
-        const skillsProg = prepareSkills(response1.data.transaction || [])
-        const auditStats = countAudits(response2.data.user) || [];
+        if (!userInfo || !auditUsers || !transactions || !skills) {
+            throw new Error("Failed to load user information.");
+        }
+
+        const transactionStats = calcTransaction(transactions);
+        const skillsProg = prepareSkills(skills);
+        const auditStats = countAudits(auditUsers) || {};
 
         app.innerHTML = components.profile(userInfo, transactionStats, skillsProg, auditStats);
     } catch (err) {
@@ -41,7 +47,6 @@ renders.profile = async () => {
 renders.popupError = (errorMsg) => {
     const errorPopup = document.querySelector('.popup-container');
     const errorMessageElement = document.querySelector('.popup-error-message');
-
     errorMessageElement.textContent = errorMsg;
     errorPopup.style.display = 'block';
     setTimeout(() => {

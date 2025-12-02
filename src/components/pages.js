@@ -46,7 +46,7 @@ components.profile = (userInfo, transStats = {},  skillsProg = [], auditStat = {
             </div>
                 ${sections.ratio(ratioStats)}
                 ${graphs.progressChart(skillsProg)}
-                ${graphs.donutChart(auditStat)}
+                ${graphs.donatChart(auditStat)}
 
             </div>
         </div>

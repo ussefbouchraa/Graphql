@@ -40,9 +40,10 @@ export const calcTransaction = (transactions) => {
 
 export function prepareSkills(data) {    
 const map = new Map()
-const arr = [];
+
     for(const obj of data){
-        map.set((obj.type).replace("skill_", ""), obj.amount)
+        if (!obj?.type) continue;
+        map.set((obj.type).replace("skill_", "").toUpperCase(), obj.amount)
     }
     
 return map
@@ -52,8 +53,9 @@ return map
 export function countAudits(res){
     if (!res?.[0]?.audits_aggregate?.aggregate?.count) return {}
     
-    const validated = res[0].audits_aggregate.aggregate.count;
-    const failed = res[0].failed_audits.aggregate.count;
+
+    const validated = res[0]?.audits_aggregate?.aggregate?.count || 0;
+    const failed = res[0]?.failed_audits?.aggregate?.count || 0;
     
     return  {validated , failed }
 

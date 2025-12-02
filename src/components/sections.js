@@ -6,7 +6,7 @@ sections.userInfo = (user = {}) => {
     return `
         <section class="profile-section user-info-section">
             <div class="section-header">
-                <h2 class="section-title">👤 User Identification</h2>
+                <h2 class="section-title">👤 User Info</h2>
             </div>
             <div class="section-content">
                 <div class="info-item">
