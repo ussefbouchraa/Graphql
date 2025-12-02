@@ -45,7 +45,7 @@ graphs.donatChart = (audits) => {
     const total = validated + failed;
     
     const circumference = 2 * Math.PI * 100;
-    const successDash = total ? (validated / total) * circumference : 0;
+    const successDash = total ? (validated / total) * circumference : 0
 
     return `
     <section class="graph-section donat-chart">
