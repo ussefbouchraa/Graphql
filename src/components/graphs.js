@@ -3,8 +3,8 @@ export const graphs = {}
 
 
 graphs.progressChart = (skills) => {
-    
-    
+
+
     let max = -Infinity;
     let y = 0;
     for (const [name, amount] of skills) { if (amount > max) max = amount; }
@@ -15,7 +15,7 @@ graphs.progressChart = (skills) => {
         <div class="section-content">
         <svg class="svg" width="100%" height="${skills.size * 60}">
     `;
-    
+
     skills.forEach((amount, name) => {
         const percent = (amount / max) * 100;
 
@@ -43,7 +43,7 @@ graphs.donatChart = (audits) => {
     const validated = audits?.validated || 0;
     const failed = audits?.failed || 0;
     const total = validated + failed;
-    
+
     const circumference = 2 * Math.PI * 100;
     const successDash = total ? (validated / total) * circumference : 0
 
@@ -55,6 +55,7 @@ graphs.donatChart = (audits) => {
 
         <div class="section-content">
             <svg width="100%" height="260">
+            <circle cx="50%" cy="130" r="100"  fill="none" stroke="#ffffffff" stroke-width="30"/>
             <circle cx="50%" cy="130" r="100"  fill="none" stroke="#444B5A" stroke-width="30" stroke-dasharray="${successDash}" />
 
             <text x="50%" y="40%" text-anchor="middle"  font-size="22" fill="#636060ff"> Total: ${total} </text>

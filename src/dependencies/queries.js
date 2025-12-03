@@ -19,28 +19,23 @@ query {
     email
   }
 
-  transaction(
-    where: {
-      _or: [
-        {
-          type: { _in: ["xp", "level"] },
-          object: {
-            _or: [
-              { type: { _eq: "project" }, name: { _nlike: "quest%" } },
-              { type: { _eq: "piscine" } },
-              { type: { _eq: "module" } }
-            ]
-          }
-        },
-                
-        { type: { _eq: "up" } },
-        { type: { _eq: "down" } }
-      ]
-    }
-  ) {
-    amount
-    type
+transaction(
+  where: {
+    _or: [
+      {
+        type: { _in: ["xp", "level"] },
+        object: {
+          type: { _in: ["project", "piscine", "module"] },name: { _nlike: "quest%" }
+        }
+      },
+      { type: { _in: ["up", "down"] } }
+    ]
   }
+) {
+  amount
+  type
+}
+
 }
     `;
 
@@ -55,7 +50,7 @@ queries.SKILLS_QUERY = `
     }`;
 
 
-    queries.AUDIT_QUERY = `
+queries.AUDIT_QUERY = `
     query{
         user {
             audits_aggregate(where: {closureType: {_eq: succeeded}}) {

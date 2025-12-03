@@ -1,6 +1,6 @@
 import { components } from '../components/pages.js';
-import { queries } from '../queries/queries.js';
-import { graphQLRequest } from '../queries/request.js';
+import { queries } from '../dependencies/queries.js';
+import { graphQLRequest } from '../dependencies/request.js';
 import { calcTransaction, prepareSkills, countAudits } from "./helper.js"
 
 
