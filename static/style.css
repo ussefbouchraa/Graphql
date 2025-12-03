@@ -98,46 +98,47 @@ input:focus {
 /* status Page Styles */
 
 #status-container {
-
     width: 100%;
     height: 100vh;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    padding: 40px 20px;
+    background: #444B5A;
+    box-shadow: 0 8px 24px rgba(255, 255, 255, 0.15);
+    overflow: hidden;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    gap: 20%;
 }
 
-#status-info {
+#status-form {
+    width: 50%;
     display: flex;
-    margin: auto;
-    width: 70%;
     flex-direction: column;
-    gap: 18px;
-    padding: 30px;
-    text-align: center;
-    box-shadow: 0 24px 40px rgba(0, 0, 0, 0.2);
-    background-color: #ffffff;
-    border-radius: 0 0 16px 16px;
-    color: #333;
+    align-self: center;
+    background-color: #E3E3E3;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 2px 10px 5px #ffffff;
 }
 
 .status-header {
-    height: 80px;
-    border: 1px solid re;
-    /* width: 100%; */
-    border-radius: 16px 16px 0 0;
-    background: linear-gradient(135deg, #667eea 0%, #4a59e2 100%);
     display: flex;
-    align-items: center;
     justify-content: center;
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    align-items: center;
+    font-size: xx-large;
+    text-decoration: line-through;
+    font-weight: bold;
+    height: 100px;
+    background-color: #444B5A;
+    color: #E3E3E3;
 }
 
-.status-header h1 {
-    color: white;
-    font-size: 26px;
-    font-weight: 700;
-    letter-spacing: 1px;
+.status-info {
+    border-radius: 10px;
+    height: 200px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+
 }
 
 
@@ -145,38 +146,34 @@ input:focus {
     font-size: 32px;
     text-transform: uppercase;
     font-weight: 800;
-    color: #4a59e2;
+    color: #444B5A;
     margin-bottom: 10px;
     letter-spacing: 1px;
 }
 
 .status-msg {
-    font-size: 18px;
-    color: #555;
-    margin-bottom: 5px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #444B5A;
 }
 
 .status-icon {
-    font-size: 40px;
-    color: #764ba2;
-    margin: 10px auto 20px auto;
+    background-color: transparent;
 }
 
 .status-btn {
-    display: inline-flex;
+    display: flex;
     justify-content: center;
     align-items: center;
     height: 50px;
     border-radius: 25px;
     border: none;
     color: white;
-    background: linear-gradient(135deg, #4a59e2 0%, #764ba2 100%);
-    margin: 5px auto 0 auto;
+    background: #444B5A;
     cursor: pointer;
     font-size: 16px;
     font-weight: 600;
     text-decoration: none;
-    min-width: 180px;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -238,6 +235,7 @@ input:focus {
     height: 100px;
     background-color: #444B5A;
     color: #E3E3E3;
+    overflow: hidden;
 }
 
 .log-section {
@@ -258,7 +256,7 @@ input[type="password"] {
     max-width: 1200px;
     padding: 20px;
     min-height: 100vh;
-    background-color: #444b5a; 
+    background-color: #444b5a;
     margin: 0;
     display: flex;
     flex-direction: column;
@@ -300,7 +298,7 @@ input[type="password"] {
 
 .profile-section {
     /* background: white; */
-    background-color:#E3E3E3;
+    background-color: #E3E3E3;
     border-top: 5px solid #ffffff;
     border-radius: 16px;
     padding: 25px;

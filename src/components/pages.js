@@ -28,8 +28,8 @@ components.login = () => {
     `
 }
 
-components.profile = (userInfo, transStats = {},  skillsProg = [], auditStat = {} ) => {    
-    
+components.profile = (userInfo, transStats = {}, skillsProg = [], auditStat = {}) => {
+
     const ratioStats = transStats.ratioStats || {}
     const gradeStats = transStats.gradeStats || {}
     return `     
@@ -56,13 +56,24 @@ components.profile = (userInfo, transStats = {},  skillsProg = [], auditStat = {
 components.statusPage = (statusMsg) => {
     return `
         <div id="status-container">
-        <section id="status-info">
-            <nav class="status-header"> <h1>Status Code</h1></nav>
-            <h2 class="status-title">${statusMsg?.title || 'Error'}</h2>
-            <p class="status-msg">${statusMsg?.message || 'An error occurred'}</p>
-            <mark class="status-icon">${statusMsg?.icon || '⚠️'}</mark>
-            <a class="status-btn" href="/profile" data-link>Go Back</a>
-            </section>
+           <nav class="login-header">
+                <div class="logo"> <img src="../../static/logo.png"></img></div> <h1>||</h1>
+            </nav>
+        <form id="status-form">
+            <header class="status-header"> Status Code </header> <br> <hr>
+            <section class="status-info">
+                <h2 class="status-title">${statusMsg?.title || 'Error'}</h2>
+                <p class="status-msg">${statusMsg?.message || 'An error occurred'} 
+                <mark class="status-icon">${statusMsg?.icon || '⚠️'}</mark>
+                </p>
+                </section>
+                <a class="status-btn" href="/profile" data-link>Go Back</a>
+            
+        </form>
      </div>
+
+ 
+
+
     `
 }
