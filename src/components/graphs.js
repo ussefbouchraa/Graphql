@@ -7,7 +7,6 @@ graphs.progressChart = (skills) => {
 
     let max = -Infinity;
     let y = 0;
-    for (const [name, amount] of skills) { if (amount > max) max = amount; }
 
     let svg = `
         <section class="graph-section skills-chart">
@@ -17,13 +16,11 @@ graphs.progressChart = (skills) => {
     `;
 
     skills.forEach((amount, name) => {
-        const percent = (amount / max) * 100;
-
         svg += `
             <text x="0" y="${y + 10}" font-size="15" fill="gray">${name}</text>
             <rect x="0" y="${y + 20}" rx ="10" width="100%" height="25" fill="white" />
-            <rect x="0" y="${y + 20}" rx ="10" width="${percent}%" height="25" fill="#444B5A" />
-            <text  x="86%" y="${y + 39}" font-size="18" fill="gray">${percent.toFixed()}%</text>
+            <rect x="0" y="${y + 20}" rx ="10" width="${amount}%" height="25" fill="#444B5A" />
+            <text  x="86%" y="${y + 39}" font-size="18" fill="gray">${amount.toFixed()}%</text>
         `;
         y += 60;
     });

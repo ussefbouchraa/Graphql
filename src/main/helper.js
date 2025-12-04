@@ -39,13 +39,13 @@ export const calcTransaction = (transactions) => {
 
 
 export function prepareSkills(data) {    
-const map = new Map()
+    const map = new Map()
 
     for(const obj of data){
         if (!obj?.type) continue;
+        if (map.has((obj.type).replace("skill_", "").toUpperCase())) continue;
         map.set((obj.type).replace("skill_", "").toUpperCase(), obj.amount)
     }
-    
 return map
 }
 

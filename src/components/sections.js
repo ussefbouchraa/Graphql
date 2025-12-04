@@ -56,7 +56,7 @@ sections.levelAmount = (level = 0) => {
                 </div>
             </div>
         </section>
-    `
+    `   
 }
 
 

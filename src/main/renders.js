@@ -32,7 +32,6 @@ renders.profile = async () => {
         if (!userInfo || !auditUsers || !transactions || !skills) {
             throw new Error("Failed to load user information.");
         }
-
         const transactionStats = calcTransaction(transactions);
         const skillsProg = prepareSkills(skills);
         const auditStats = countAudits(auditUsers) || {};

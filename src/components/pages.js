@@ -29,7 +29,6 @@ components.login = () => {
 }
 
 components.profile = (userInfo, transStats = {}, skillsProg = [], auditStat = {}) => {
-
     const ratioStats = transStats.ratioStats || {}
     const gradeStats = transStats.gradeStats || {}
     return `     
