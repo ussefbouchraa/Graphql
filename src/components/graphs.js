@@ -41,8 +41,7 @@ graphs.donatChart = (audits) => {
     const failed = audits?.failed || 0;
     const total = validated + failed;
 
-    const circumference = 2 * Math.PI * 100;
-    const successDash = total ? (validated / total) * circumference : 0
+    const percent = total ? (validated / total) * 100 : 0;
 
     return `
     <section class="graph-section donat-chart">
@@ -52,8 +51,10 @@ graphs.donatChart = (audits) => {
 
         <div class="section-content">
             <svg width="100%" height="260">
-            <circle cx="50%" cy="130" r="100"  fill="none" stroke="#ffffffff" stroke-width="30"/>
-            <circle cx="50%" cy="130" r="100"  fill="none" stroke="#444B5A" stroke-width="30" stroke-dasharray="${successDash}" />
+
+            <circle cx="50%" cy="130" r="100" fill="none" stroke="#ffffff" stroke-width="30" pathLength="100" />
+            <circle cx="50%" cy="130" r="100" fill="none" stroke="#444B5A" stroke-width="30" pathLength="100" stroke-dasharray="${percent}" stroke-linecap="round" />
+
 
             <text x="50%" y="40%" text-anchor="middle"  font-size="22" fill="#636060ff"> Total: ${total} </text>
                 <rect x="47%" y="55%" r="10" height="10" width="10" fill="#444B5A"/> <text x="52%" y="59%" font-size="15"  fill="#636060ff"> ${validated}  </text>                
